@@ -90,3 +90,4 @@ C:\Users\Joged\OneDrive\Pulpit\web\BlazorApp\obj\Debug\net10.0\scopedcss\Compone
 C:\Users\Joged\OneDrive\Pulpit\web\BlazorApp\obj\Debug\net10.0\scopedcss\Components\Pages\Ask.razor.rz.scp.css
 C:\Users\Joged\OneDrive\Pulpit\web\BlazorApp\obj\Debug\net10.0\compressed\8v4adbxxmx-{0}-vmzy2nft94-vmzy2nft94.gz
 C:\Users\Joged\OneDrive\Pulpit\web\BlazorApp\obj\Debug\net10.0\compressed\rrzzv9ip5o-{0}-vmzy2nft94-vmzy2nft94.gz
+C:\Users\Joged\OneDrive\Pulpit\web\BlazorApp\obj\Debug\net10.0\BlazorApp.sourcelink.json
