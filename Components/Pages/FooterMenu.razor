@@ -1,0 +1,16 @@
+<div class="footer-menu">
+    <div class="footer-column">
+        <h3>@Title</h3>
+        <ul>
+            @foreach (var item in Items)
+            {
+                <li><a href="@item.Url">@item.Text</a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public List<FooterLink> Items { get; set; } = new();
+}

@@ -1,0 +1,31 @@
+@page "/Footer"
+
+<PageTitle>Stopka</PageTitle>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <FooterMenu Title="Demant Operations Poland Sp. z o.o."
+                    Items="@(new List<FooterLink>
+                    {
+                        new() { Text = "ul. Lubieszyńska 59", Url = "#" },
+                        new() { Text = "72-006 Mierzyń", Url = "#" },
+                        new() { Text = "Tel. +48 91 441-77-00", Url = "#" }
+                    })" />
+
+        <FooterMenu Title="Demant Business Services Sp. z o.o."
+                    Items="@(new List<FooterLink>
+                    {
+                        new() { Text = "ul. Malczewskiego 26", Url = "#" },
+                        new() { Text = "71-612 Szczecin", Url = "#" },
+                        new() { Text = "Tel. +48 16 627-70-00", Url = "#" }
+                    })" />
+
+        <FooterMenu Title="Demant Technology Centre Sp. z o.o."
+                    Items="@(new List<FooterLink>
+                    {
+                        new() { Text = "Q22, Al. Jana Pawła II 22 9th Floor", Url = "#" },
+                        new() { Text = "00-133 Warszawa", Url = "#" },
+                        new() { Text = "Tel. +48 22 164 66 00", Url = "#" }
+                    })" />
+    </div>
+</footer>

@@ -1,0 +1,234 @@
+.ask-widget {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 2000;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.ask-toggle {
+    width: 3.2rem;
+    height: 3.2rem;
+    border: none;
+    border-radius: 50%;
+    background: #0d2b3f;
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.ask-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0 0 1rem 1rem;
+}
+
+.ask-panel {
+    width: min(100%, 480px);
+    background: #f4f4f4;
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 1.1rem 1.2rem 1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    color: #0c2d41;
+}
+
+.ask-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.ask-brand {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0d2b3f;
+    background: #dfe3e7;
+    padding: 0.75rem 1rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+}
+
+.ask-close {
+    width: 2.3rem;
+    height: 2.3rem;
+    border: none;
+    border-radius: 50%;
+    background: #0d2b3f;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.ask-panel h3 {
+    margin: 0 0 1.2rem;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #0d2b3f;
+}
+
+.ask-metrics {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: nowrap;
+}
+
+.ask-metric {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    flex: 1 1 0;
+}
+
+.ask-metric-anonymous {
+    margin-left: 2.2rem;
+}
+
+.ask-icon {
+    width: 3.3rem;
+    height: 3.3rem;
+    border: 2px solid #0d2b3f;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.ask-metric-text {
+    font-size: 0.92rem;
+    line-height: 1.2;
+    color: #0d2b3f;
+}
+
+.ask-metric-text strong {
+    font-weight: 700;
+}
+
+.ask-panel h4 {
+    margin: 0 0 0.8rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #0d2b3f;
+}
+
+.ask-rating-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.ask-rating-label {
+    font-size: 1.05rem;
+    color: #0d2b3f;
+}
+
+.ask-stars {
+    display: flex;
+    gap: 0.55rem;
+}
+
+.star {
+    width: 2.4rem;
+    height: 2.4rem;
+    border: none;
+    background: transparent;
+    color: #d4d4d4;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.star.active {
+    color: #f4c542;
+    text-shadow: 0 0 0.35rem rgba(244, 197, 66, 0.35);
+}
+
+.star:hover {
+    color: #f4c542;
+    transform: scale(1.12);
+}
+
+.ask-next {
+    display: block;
+    margin: 0.8rem 0 0 auto;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.65rem 1.3rem;
+    background: #0d2b3f;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ask-next:hover {
+    background: #174b68;
+    transform: translateY(-1px);
+}
+
+.ask-close-survey {
+    margin-top: 1.2rem;
+}
+
+.ask-scale {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.4rem 0 0.8rem;
+    font-size: 0.95rem;
+    color: #0d2b3f;
+}
+
+.ask-powered {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #0d2b3f;
+    margin-top: 0.4rem;
+}
+
+.ask-powered span {
+    font-style: italic;
+    font-weight: 700;
+}
+
+@media (max-width: 720px) {
+    .ask-panel {
+        width: 100%;
+        border-radius: 1rem 1rem 0 0;
+        padding: 1rem 1rem 0.8rem;
+    }
+
+    .ask-metrics {
+        flex-direction: column;
+        gap: 1rem;
+        flex-wrap: nowrap;
+    }
+
+    .ask-header-row {
+        margin-bottom: 0.8rem;
+    }
+}

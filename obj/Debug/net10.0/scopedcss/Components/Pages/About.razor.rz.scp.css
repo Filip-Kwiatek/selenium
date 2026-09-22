@@ -1,0 +1,44 @@
+.about-page[b-0r883ib5if] {
+  display: flex;
+  width: 80%;
+  height: 300px;
+  background-color: #ebeaea;
+  border: 2px solid #ebeaea;
+  margin: 3rem auto 2rem;
+}
+
+.about-image[b-0r883ib5if] {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 45%;
+  border: 2px solid #000;
+  background-color: #000;
+}
+
+.about-content[b-0r883ib5if] {
+  margin-top: 2rem;
+  margin-left: 6rem;
+  width: 48%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+}
+
+.about-content h2[b-0r883ib5if] {
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.about-content p[b-0r883ib5if] {
+  margin-top: -0.9rem;
+}
+
+.about-content a[b-0r883ib5if] {
+  text-decoration: none;
+}
+
+.about-content a:hover[b-0r883ib5if] {
+  text-decoration: underline;
+  color: aqua;
+}

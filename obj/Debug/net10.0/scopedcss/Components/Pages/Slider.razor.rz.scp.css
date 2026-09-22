@@ -1,0 +1,108 @@
+.slider[b-etlx2v5svm] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: min(100% - 2rem, 960px);
+  height: clamp(280px, 55vw, 520px);
+  margin: 2rem auto;
+}
+
+.photo-button[b-etlx2v5svm] {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 1rem;
+  background: #17202a;
+  box-shadow: 0 1rem 2.5rem rgba(23, 32, 42, 0.2);
+  cursor: pointer;
+}
+
+.photo[b-etlx2v5svm] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.photo-button:hover .photo[b-etlx2v5svm] {
+  transform: scale(1.03);
+}
+
+.slider-button[b-etlx2v5svm] {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #17202a;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.slider-button:hover[b-etlx2v5svm] {
+  background: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slider-button:focus-visible[b-etlx2v5svm],
+.photo-button:focus-visible[b-etlx2v5svm],
+.indicator:focus-visible[b-etlx2v5svm] {
+  outline: 3px solid #f4c95d;
+  outline-offset: 3px;
+}
+
+.previous[b-etlx2v5svm] {
+  left: -4rem;
+}
+
+.next[b-etlx2v5svm] {
+  right: -4rem;
+}
+
+.indicators[b-etlx2v5svm] {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  display: flex;
+  gap: 0.5rem;
+  transform: translateX(-50%);
+}
+
+.indicator[b-etlx2v5svm] {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.indicator.active[b-etlx2v5svm] {
+  background: #fff;
+}
+
+@media (max-width: 480px) {
+  .slider-button[b-etlx2v5svm] {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .previous[b-etlx2v5svm] {
+    left: 0.5rem;
+  }
+
+  .next[b-etlx2v5svm] {
+    right: 0.5rem;
+  }
+}

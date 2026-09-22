@@ -1,0 +1,162 @@
+@page "/Ask"
+@rendermode InteractiveServer
+
+<PageTitle>Ask</PageTitle>
+
+<div class="ask-widget">
+    @if (isOpen)
+    {
+        <div class="ask-overlay" @onclick="ClosePanel">
+            <div class="ask-panel" @onclick:stopPropagation="true">
+                <div class="ask-header-row">
+                    <h2 class="ask-brand">Demant</h2>
+                    <button class="ask-close" type="button" @onclick="ClosePanel" aria-label="Close">×</button>
+                </div>
+
+                @if (currentQuestionIndex < 2)
+                {
+                    <h3>Pomóż nam w byciu lepszym</h3>
+
+                    <div class="ask-metrics">
+                        <div class="ask-metric">
+                            <div class="ask-icon">?</div>
+                            <div class="ask-metric-text">
+                                <strong>5</strong> - liczba pytań
+                            </div>
+                        </div>
+
+                        <div class="ask-metric">
+                            <div class="ask-icon">◔</div>
+                            <div class="ask-metric-text">
+                                <strong>Czas trwania:</strong><br />2.5 min.
+                            </div>
+                        </div>
+
+                        <div class="ask-metric ask-metric-anonymous">
+                            <div class="ask-icon">🔒</div>
+                            <div class="ask-metric-text">
+                                <strong>100%</strong><br />anonimowości
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (currentQuestionIndex == 0)
+                {
+                    <h4>Czy znalazłeś(-łaś) informacje, których szukałeś(-łaś)?</h4>
+
+                    <div class="ask-rating-block">
+                        <span class="ask-rating-label">Ocena od 1 do 5</span>
+                        <div class="ask-stars" aria-label="Rating">
+                            @for (var i = 1; i <= 5; i++)
+                            {
+                                var starValue = i;
+                                <button type="button"
+                                    class="star @(Math.Max(selectedRating, hoveredRating) >= starValue ? "active" : "")"
+                                        aria-label="@($"{starValue} star")"
+                                    @onclick="() => SelectRating(starValue)"
+                                    @onmouseover="() => SetHoveredRating(starValue)"
+                                    @onmouseout="ClearHoveredRating">
+                                    ★
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="ask-scale">
+                        <span>W ogóle</span>
+                        <span>Zdecydowanie</span>
+                    </div>
+
+                    @if (selectedRating > 0)
+                    {
+                        <button class="ask-next" type="button" @onclick="NextQuestion">Dalej</button>
+                    }
+                }
+                else if (currentQuestionIndex == 1)
+                {
+                    <h4>Jak oceniasz jakość tej strony?</h4>
+
+                    <div class="ask-rating-block">
+                        <span class="ask-rating-label">Ocena od 1 do 5</span>
+                        <div class="ask-stars" aria-label="Rating">
+                            @for (var i = 1; i <= 5; i++)
+                            {
+                                var starValue = i;
+                                <button type="button"
+                                    class="star @(Math.Max(selectedRating, hoveredRating) >= starValue ? "active" : "")"
+                                        aria-label="@($"{starValue} star")"
+                                    @onclick="() => SelectRating(starValue)"
+                                    @onmouseover="() => SetHoveredRating(starValue)"
+                                    @onmouseout="ClearHoveredRating">
+                                    ★
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    @if (selectedRating > 0)
+                    {
+                        <button class="ask-next" type="button" @onclick="NextQuestion">Dalej</button>
+                    }
+                }
+                else
+                {
+                    <h4>Dziękujemy za Twoją opinię!</h4>
+                    <button class="ask-next ask-close-survey" type="button" @onclick="ClosePanel">Zamknij</button>
+                }
+
+                @if (currentQuestionIndex < 2)
+                {
+                    <div class="ask-powered">Powered by <span>talenthub</span></div>
+                }
+            </div>
+        </div>
+    }
+
+    <button class="ask-toggle" type="button" @onclick="TogglePanel" aria-label="Open survey">
+        ★
+    </button>
+</div>
+
+@code {
+    private bool isOpen;
+    private int currentQuestionIndex;
+    private int selectedRating;
+    private int hoveredRating;
+
+    private void TogglePanel()
+    {
+        isOpen = !isOpen;
+    }
+
+    private void ClosePanel()
+    {
+        isOpen = false;
+        currentQuestionIndex = 0;
+        selectedRating = 0;
+        hoveredRating = 0;
+    }
+
+    private void SelectRating(int value)
+    {
+        selectedRating = value;
+    }
+
+    private void SetHoveredRating(int value)
+    {
+        hoveredRating = value;
+    }
+
+    private void ClearHoveredRating()
+    {
+        hoveredRating = 0;
+    }
+
+    private void NextQuestion()
+    {
+        currentQuestionIndex++;
+        selectedRating = 0;
+        hoveredRating = 0;
+    }
+}

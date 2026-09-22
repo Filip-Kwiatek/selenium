@@ -1,0 +1,22 @@
+.footer {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background-color: #24405b;
+  color: #fff;
+
+}
+
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2.2rem;
+  padding: 2rem;
+  margin-left: 10rem;
+
+}
+
+.footer-menu {
+  flex: 0 0 auto;
+  min-width: 186px;
+}

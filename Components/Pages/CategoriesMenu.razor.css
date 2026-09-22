@@ -1,0 +1,15 @@
+.lead {
+  margin-top: 3rem;
+  margin-inline: auto;
+  text-align: center;
+  width: 620px;
+}
+
+.lead a {
+    text-decoration: none;
+}
+
+.lead a:hover {
+    text-decoration: underline;
+    color:aqua;
+}

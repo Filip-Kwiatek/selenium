@@ -1,0 +1,99 @@
+@page "/slider"
+@rendermode InteractiveServer
+@implements IAsyncDisposable
+
+<PageTitle>Slider</PageTitle>
+
+<section class="slider" aria-label="Galeria zdjęć">
+	<button class="slider-button previous" type="button" aria-label="Poprzednie zdjęcie" @onclick="ShowPrevious">
+		<span aria-hidden="true">&#10094;</span>
+	</button>
+
+	<button class="photo-button" type="button" aria-label="Następne zdjęcie" @onclick="ShowNext">
+		<img class="photo" src="@photos[currentPhoto].Url" alt="@photos[currentPhoto].Alt" />
+	</button>
+
+	<button class="slider-button next" type="button" aria-label="Następne zdjęcie" @onclick="ShowNext">
+		<span aria-hidden="true">&#10095;</span>
+	</button>
+
+	<div class="indicators" aria-label="Wybierz zdjęcie">
+		@for (var index = 0; index < photos.Count; index++)
+		{
+			var photoIndex = index;
+			<button class="indicator @(photoIndex == currentPhoto ? "active" : "")"
+					type="button"
+					aria-label="Zdjęcie @(photoIndex + 1)"
+					aria-current="@(photoIndex == currentPhoto ? "true" : "false")"
+					@onclick="() => ShowPhoto(photoIndex)"></button>
+		}
+	</div>
+</section>
+
+@code {
+	private readonly List<Photo> photos =
+	[
+		new("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85", "Górski krajobraz"),
+		new("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85", "Plaża nad oceanem"),
+		new("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85", "Jezioro wśród gór")
+	];
+	private readonly CancellationTokenSource timerCancellation = new();
+
+	private int currentPhoto;
+	private Task? autoAdvanceTask;
+
+	protected override void OnInitialized()
+	{
+		autoAdvanceTask = AdvanceAutomaticallyAsync();
+	}
+
+	private void ShowNext()
+	{
+		currentPhoto = (currentPhoto + 1) % photos.Count;
+	}
+
+	private void ShowPrevious()
+	{
+		currentPhoto = (currentPhoto - 1 + photos.Count) % photos.Count;
+	}
+
+	private void ShowPhoto(int photoIndex)
+	{
+		currentPhoto = photoIndex;
+	}
+
+	private async Task AdvanceAutomaticallyAsync()
+	{
+		using var timer = new PeriodicTimer(TimeSpan.FromSeconds(5));
+
+		try
+		{
+			while (await timer.WaitForNextTickAsync(timerCancellation.Token))
+			{
+				await InvokeAsync(() =>
+				{
+					ShowNext();
+					StateHasChanged();
+				});
+			}
+		}
+		catch (OperationCanceledException) when (timerCancellation.IsCancellationRequested)
+		{
+		}
+	}
+
+	public async ValueTask DisposeAsync()
+	{
+		timerCancellation.Cancel();
+
+		if (autoAdvanceTask is not null)
+		{
+			await autoAdvanceTask;
+		}
+
+		timerCancellation.Dispose();
+	}
+
+	private record Photo(string Url, string Alt);
+}
+    

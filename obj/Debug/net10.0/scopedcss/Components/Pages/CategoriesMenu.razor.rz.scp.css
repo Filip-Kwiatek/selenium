@@ -1,0 +1,15 @@
+.lead[b-zn84ibeh8r] {
+  margin-top: 3rem;
+  margin-inline: auto;
+  text-align: center;
+  width: 620px;
+}
+
+.lead a[b-zn84ibeh8r] {
+    text-decoration: none;
+}
+
+.lead a:hover[b-zn84ibeh8r] {
+    text-decoration: underline;
+    color:aqua;
+}
